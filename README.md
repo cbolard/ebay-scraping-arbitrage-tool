@@ -1,4 +1,4 @@
-```markdown
+
 # Scraper de Produits Amazon
 
 Ce projet permet de scraper des informations de produits à partir de recherches effectuées sur Amazon. L'utilisateur copie et colle l'URL de la recherche Amazon dans l'interface web, et le service génère un fichier CSV contenant des informations telles que le nom du produit, la note, le prix, le nombre de ventes, et le lien vers le produit.
@@ -79,4 +79,3 @@ Ce projet est sous licence MIT - voir le fichier LICENSE pour plus de détails.
 
 * Merci à tous ceux qui ont contribué au projet !
 * Inspiré par les nombreuses possibilités offertes par l'API d'Amazon.
-```
