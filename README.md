@@ -18,7 +18,7 @@ Ces instructions vous permettront d'obtenir une copie du projet en cours d'exéc
 
 1. Clonez le dépôt et naviguez dans le dossier du backend.
    ```bash
-   git clone https://votreDepot.git
+   git clone https://votreDepot.git](https://github.com/cbolard/amazon-scraping-tool.git)
    cd scrapping-pages-tool/backend
    ```
 
