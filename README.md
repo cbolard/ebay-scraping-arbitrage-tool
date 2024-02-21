@@ -57,7 +57,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## Usage
 
 1. Open your browser to the address provided by Vite (usually `http://localhost:3000`).
-2. Copy and paste the URL of an Amazon search into the designated field on the webpage.
+2. Search for a product into the designated field on the webpage.
 3. Click the button to generate the CSV file. The download should start automatically.
 
 ## Built With
