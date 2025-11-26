@@ -88,7 +88,7 @@ This project solves a specific engineering challenge: **Data Extraction from Pro
 
 ## � Screenshots
 
-*(Add screenshots of your dashboard here)*
+![Dashboard](./frontend/public/dashboard-preview.png)
 
 ---
 
@@ -100,4 +100,4 @@ This project solves a specific engineering challenge: **Data Extraction from Pro
 
 ---
 
-Made with ❤️ by [Your Name]
+Made with ❤️ by @cbolard
