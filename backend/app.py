@@ -1,11 +1,24 @@
-from flask import Flask, request, send_file
-from scraper import scrape_to_csv, generer_nom_fichier
+from flask import Flask, request, send_file, jsonify
+from scraper import scrape_ebay, save_to_csv, generer_nom_fichier
 from flask_cors import CORS
 import os
 
 app = Flask(__name__, static_folder='../frontend/dist', static_url_path='/')
 CORS(app)
 
+@app.route('/api/search', methods=['POST'])
+def search():
+    try:
+        data = request.json
+        url = data.get('url')
+        if not url:
+            return jsonify({"error": "URL is required"}), 400
+            
+        results = scrape_ebay(url)
+        return jsonify(results)
+    except Exception as e:
+        print(f"Error during search: {e}", flush=True)
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/generate-csv', methods=['POST'])
 def generate_csv():
@@ -22,13 +35,17 @@ def generate_csv():
     if not os.path.exists(dossier):
         os.makedirs(dossier)
 
-    # Appel à la fonction de scraping pour générer le CSV
-    scrape_to_csv(url, csv_path)
-
-    # Retourne le fichier CSV généré
-    return send_file(csv_path, as_attachment=True, download_name=nom_fichier)
+    try:
+        # Appel à la fonction de scraping pour générer le CSV
+        results = scrape_ebay(url)
+        save_to_csv(results, csv_path)
+        # Retourne le fichier CSV généré
+        return send_file(csv_path, as_attachment=True, download_name=nom_fichier)
+    except Exception as e:
+        print(f"Error generating CSV: {e}", flush=True)
+        return {"error": str(e)}, 500
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
 
