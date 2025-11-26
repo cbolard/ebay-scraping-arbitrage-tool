@@ -1,107 +1,103 @@
-# AMAZON // RADAR
+# 🦅 eBay Stealth Scraper & Arbitrage Dashboard
 
-> **The Tactical Arbitrage Weapon.**
-> Stop guessing. Start sniping.
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
+![React](https://img.shields.io/badge/react-18-61dafb.svg)
+![TypeScript](https://img.shields.io/badge/typescript-5.0-3178c6.svg)
+![Docker](https://img.shields.io/badge/docker-ready-2496ed.svg)
 
-![Amazon Radar Dashboard](./frontend/public/dashboard-preview.png)
+**A high-performance, anti-detect scraping tool designed to uncover underpriced eBay listings in real-time.**
 
-## ⚡ The Problem
-
-Amazon is a jungle. Millions of products, fluctuating prices, and hidden gems buried under pages of junk. Finding the "sweet spot"—high value, low price—is a manual, painful process.
-
-## 🎯 The Solution
-
-**Amazon Radar** is not just a scraper. It's a **Tactical Visualization Tool** designed for arbitrage hunters and smart shoppers. It turns raw data into a **Market Battlefield**, allowing you to spot anomalies, underpriced assets, and high-value opportunities in seconds.
+This project goes beyond simple HTML parsing. It implements advanced **TLS fingerprint spoofing** to bypass modern anti-bot protections, coupled with a reactive **Cyberpunk-styled dashboard** for data visualization and arbitrage analysis.
 
 ---
 
-## 🔥 Key Features
+## 🚀 Key Features
 
-### 📡 Tactical Radar (The "Weapon")
+### 🕵️‍♂️ Stealth Scraping Engine
 
-- **Market Visualization**: Instantly see the entire market landscape. Price vs. Rating vs. Value.
-- **Bi-Directional Sync**: Hover over the chart to pinpoint the exact product in the list. Hover the list to light up the chart.
-- **Sniper Zoom**: Drag-and-drop to zoom into specific price clusters (e.g., "Show me everything between 20€ and 50€").
-- **Smart Tooltips**: Interactive cards with "Buy Now" buttons directly on the graph.
+- **TLS Fingerprint Bypassing**: Uses `curl_cffi` to impersonate legitimate Chrome browser signatures (JA3/JA4), successfully evading eBay's strict anti-bot measures where standard libraries (Requests, Selenium) fail.
+- **Smart Fallbacks**: Automatically switches strategies (e.g., from "Sold" to "Active" listings) and rotates headers to maintain access.
+- **Robust Parsing**: Handles dynamic CSS class obfuscation (`s-item` vs `s-card`) and locale-specific formats (French dates/prices).
 
-### 🧠 Smart Filters
+### � Arbitrage Intelligence Dashboard
 
-- **Auto-Categorization**: Automatically sorts products into Consoles, Games, and Accessories.
-- **Contextual Pricing**: One-click filters for "Pocket Money" (<20€), "Mid-Range", and "High-Ticket".
-- **Junk Filter**: Instantly hide low-rated (<4.0) and low-value items.
+- **Value Radar**: A custom Recharts visualization that plots Price vs. Rating/Condition to identify the "sweet spot" deals.
+- **Deal Scoring**: Automatically calculates a `Value Score` for every item to highlight profitable flips.
+- **Instant Filtering**: Real-time sorting and filtering by price, condition, and date without re-fetching data.
 
-### 💎 Obsidian & Glass UI
+### ⚡ Modern Tech Stack
 
-- **Premium Aesthetic**: Dark mode by default. Glassmorphism. Neon accents.
-- **Bento Box Layout**: Information density without the clutter.
-- **HUD Metrics**: Real-time tracking of Market Ceiling, Market Floor, and Signal Integrity.
+- **Backend**: Python, Flask, BeautifulSoup4, `curl_cffi`.
+- **Frontend**: React, TypeScript, Tailwind CSS, Vite.
+- **DevOps**: Fully Dockerized with `docker-compose` for one-command deployment.
+
+---
+
+## 🧠 Technical Highlights (For Recruiters)
+
+This project solves a specific engineering challenge: **Data Extraction from Protected Targets.**
+
+1. **The Challenge**: eBay employs advanced bot detection that analyzes the **TLS Handshake** (JA3 fingerprint). Standard Python requests have a distinct fingerprint that is immediately blocked (403/503 errors), regardless of User-Agent rotation.
+2. **The Solution**: I implemented a custom HTTP client using `curl_cffi` (Foreign Function Interface for curl). This allows the Python backend to perform a TLS handshake that is **cryptographically identical** to a real Chrome 120 browser.
+3. **The Result**: The scraper achieves a near-100% success rate on protected pages, extracting critical market data that standard tools cannot reach.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React, TypeScript, Vite, Tailwind CSS (Obsidian Theme), Recharts.
-- **Backend**: Python, Flask, BeautifulSoup4.
-- **Infrastructure**: Docker & Docker Compose.
+| Component | Technology |
+|-----------|------------|
+| **Core Logic** | Python 3.9+ |
+| **API** | Flask (RESTful) |
+| **Scraping** | `curl_cffi`, BeautifulSoup4 |
+| **Frontend** | React 18, TypeScript |
+| **Styling** | Tailwind CSS (Cyberpunk Theme) |
+| **Viz** | Recharts, Lucide React |
+| **Container** | Docker, Docker Compose |
 
 ---
 
-## 🚀 Quick Start (Docker)
+## 🏁 Getting Started
 
-The fastest way to deploy the radar.
+### Prerequisites
 
-1. **Clone the repo**
+- Docker & Docker Compose
+- *Or* Python 3.9+ and Node.js 18+ (for local dev)
+
+### Quick Start (Docker)
+
+1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/cbolard/amazon-scraping-tool.git
+   git clone https://github.com/yourusername/amazon-scraping-tool.git
    cd amazon-scraping-tool
    ```
 
-2. **Launch the System**
+2. **Launch the stack**
 
    ```bash
-   docker-compose up --build
+   docker compose up --build
    ```
 
-3. **Access the Dashboard**
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
+3. **Access the App**
+   - Frontend: `http://localhost:5173`
+   - Backend API: `http://localhost:5000`
 
 ---
 
-## 🕹️ How to Use
+## � Screenshots
 
-1. **Search**: Enter a keyword (e.g., "PS5 Games") in the command bar.
-2. **Analyze**: Watch the Radar populate. Look for **Purple/Indigo** dots (High Value).
-3. **Filter**: Use the tabs to isolate "Games" or "Consoles". Toggle "Hide Junk" to clear the noise.
-4. **Snipe**: Drag a box on the chart to zoom in on a price range.
-5. **Execute**: Click the product title or the "BUY" button to go straight to the Amazon page.
+*(Add screenshots of your dashboard here)*
 
 ---
 
-## 📦 Manual Installation (Dev)
+## 🔮 Future Roadmap
 
-If you want to run it without Docker:
-
-### Backend
-
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
-pip install -r requirements.txt
-python app.py
-```
-
-### Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
+- [ ] **Multi-Platform Support**: Expand to Amazon and Rakuten.
+- [ ] **AI Price Analysis**: Integrate OpenAI API to estimate item condition from images.
+- [ ] **Notification System**: Telegram/Discord alerts for high-value snipes.
 
 ---
 
-## 📄 License
-
-MIT License. Use it, fork it, make money with it.
+Made with ❤️ by [Your Name]
