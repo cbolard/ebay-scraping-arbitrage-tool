@@ -4,20 +4,28 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__, static_folder='../frontend/dist', static_url_path='/')
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "*", "methods": ["GET", "POST", "OPTIONS"], "allow_headers": ["Content-Type"]}})
 
 @app.route('/api/search', methods=['POST'])
 def search():
     try:
         data = request.json
+        print(f"[API] Received search request: {data}", flush=True)
+
         url = data.get('url')
         if not url:
             return jsonify({"error": "URL is required"}), 400
-            
+
+        print(f"[API] Scraping URL: {url}", flush=True)
         results = scrape_ebay(url)
+        print(f"[API] Scraper returned {len(results)} items", flush=True)
+
+        if results:
+            print(f"[API] Sample item: {results[0]}", flush=True)
+
         return jsonify(results)
     except Exception as e:
-        print(f"Error during search: {e}", flush=True)
+        print(f"[API] Error during search: {e}", flush=True)
         return jsonify({"error": str(e)}), 500
 
 @app.route('/generate-csv', methods=['POST'])

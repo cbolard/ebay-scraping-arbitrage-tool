@@ -25,7 +25,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, loading }) => {
                 <input
                     type="text"
                     className="block w-full pl-11 pr-12 py-3 bg-glass-bg border border-glass-border rounded-xl text-off-white placeholder-muted focus:outline-none focus:ring-2 focus:ring-indigo-accent/50 focus:border-indigo-accent/50 transition-all duration-200 backdrop-blur-md"
-                    placeholder="Search Amazon (e.g., 'RTX 4070', 'Lego Star Wars')..."
+                    placeholder="Search eBay (e.g., 'RTX 4070', 'Lego Star Wars')..."
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     disabled={loading}
